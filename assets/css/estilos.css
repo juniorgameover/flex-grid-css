@@ -1,0 +1,208 @@
+@font-face {
+    font-family: 'icones';
+    src: url(../font/icones.ttf);
+}
+
+body {
+    background-color: #1D232A;
+    font-family: 'Open sans' , 'icones' , sans-serif;
+    color: #ffffff;
+}
+
+.cabecalho {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #15191C;
+    padding: 8px 8px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.16);
+}
+
+.cabecalho__menu i::before {
+    content: "\e904";
+    font-size: 24px;
+
+}
+
+.cabecalho__notificacao i::before {
+    content: "\e906";
+    font-size: 24px;
+}
+
+.cabecalho__logo {
+    width: 40px;
+}
+
+.menu-lateral {
+    display: flex;
+    flex-direction: column;
+    background-color: #15191C;
+    width: 75vw;
+    height:100vh;
+     /*escondendo o menu de forma que fique do lado esquerdo fora da janela de visualização da página*/
+    position: absolute;
+    left: -100vw; /*deslocado todo para esquerda, fora da viewport*/
+    transition: 0.25s; /*adiciona um intervalo de tempo para o efeito ser aplicado, caso o contrário seria 
+    imediatamente*/
+}
+
+.menu-lateral--ativo {
+    left: 0;
+    transition: 0.25s; /*quando a classe ativa for aplicada na tag, esta passa a ter o left 0, fazendo voltar para a posição anterior*/
+}/*essa classe deve aparecer e sumir dentro do html conforme o botaoMenu(js) seja clicado*/
+
+.menu-lateral__logo {
+    align-self:center;
+    width: 118px;
+    padding: 16px;
+
+}
+
+.menu-lateral__link {
+    height: 64px;
+    color: #959990;
+    padding-left: 64px;
+    display: flex;
+    align-items: center;
+
+}
+
+.menu-lateral__link--ativo {
+    color: #FFFFFF;
+    padding-left: 56px;
+    border-left: 8px solid #FFFFFF;
+}
+
+.menu-lateral__link::before {
+    content: "";
+    width: 24px;
+    height: 24px;
+    font-size: 24px;
+    position: absolute;
+    left: 24px;
+}
+
+.menu-lateral__link--inicio::before {
+    content: "\e902";
+}
+
+.menu-lateral__link--videos::before {
+    content: "\e90e";
+}
+
+.menu-lateral__link--picos::before {
+    content: "\e909";
+}
+
+.menu-lateral__link--integrantes::before {
+    content: "\e903";
+}
+
+.menu-lateral__link--camisas::before {
+    content: "\e900";
+}
+
+.menu-lateral__link--pinturas::before {
+    content: "\e90a";
+}
+
+.principal {
+    padding: 24px 16px;
+    display: grid;
+    gap: 16px;
+}
+
+.titulo-pagina {
+    font-size: 1.5rem;  
+    font-weight: 700;
+}
+
+.titulo-secao {
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+.secao {
+    display: grid;
+    gap: 16px;
+}
+
+.cartao {
+    width: 100%;
+    border-radius: 15px;
+    overflow: hidden; /*define que tudo que ultrapassar os limites das bordas do conteiner não será visto*/
+    background-color: #2c343a;
+}
+
+.cartao__conteudo{
+    padding: 16px;
+    display: grid;
+    grid-template-columns: auto 1fr; /*deixando a primeira como auto esta passa a ganhar a largura do maior elemento*/
+    gap: 8px; /*coloca espaçamento entre os grid elements entre as linhas e colunas 
+    para colocar espaçamento apenas entre linhas, usar o row-gap
+    para colocar espaçamento apenas entre colunas, usar o column-gap*/
+}
+
+.cartao--destaque {
+    margin-bottom: 16px;
+}
+
+.cartao__titulo {
+    font-size: 1.2rem;
+    font-weight: 700;
+    grid-column: span 2;
+}
+
+
+.cartao__destaque{
+    grid-column: span 2;
+}
+
+.cartao__perfil {
+    color:#95999C;
+    font-size: 0.9rem;
+    grid-column: span 2;    
+}
+
+.cartao__info {
+    display: flex;
+    align-items: center;
+    color: #95999C;
+}
+
+
+.cartao__info--tempo::before {
+    content: "\e90c";
+    margin-right: 8px;
+}
+
+.cartao__info--visualizacao::before {
+    content: "\e90f";
+    margin-right: 8px;
+}
+
+.cartao__botao {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #0480dc;
+    width: 40px;
+    border-radius: 10px;
+    font-size: 0.9rem;
+    justify-self:end;
+}
+
+.cartao__botao--play::before {
+    content: "\e90b";
+    font-size: 24px;
+
+}
+
+.cartao__botao--destaque {
+    width: 100%;
+    grid-column: span 2;
+}
+
+.cartao__botao--destaque::before {
+    margin-right: 8px;
+}
+
