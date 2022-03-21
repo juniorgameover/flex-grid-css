@@ -53,6 +53,7 @@ body {
         padding: 16px 60px;
         height: 80px;
         box-sizing: border-box;
+        grid-column: 2;
         
     }
 
@@ -173,6 +174,11 @@ body {
     .menu-lateral {
         position: static;
         width: 200px;
+        grid-column: 1; /*o valor 1 indica que o grid item ocupará a primeira coluna*/
+        grid-row: 1 span 2; /* o valor 1 indica que ocupará a primeira linha. Caso não seja definido onde será a linha e 
+        a coluna de um grid element, ele seguirá a sequencia de escrita do código html. O span indica que o conteúdo se 
+        estenderá para a linha a baixo do seu ponto inicial*/
+        
     }
 }
 
@@ -196,14 +202,33 @@ body {
     .principal {
         display: grid;
         grid-template-columns: auto 1fr auto;
+        grid-template-areas: 
+        "titulo-pagina titulo-pagina titulo-pagina" 
+        "destaque-video destaque-video videos-recentes" 
+        "secao-videos secao-videos secao-videos"
+        "produtos-recentes destaque-produtos destaque-produtos"
+        "secao-produtos secao-produtos secao-produtos"; /*cada linha do grid container fica dentro de cada aspas duplas. Dentro das aspas duplas devem ser
+        colocadas o nome dos elementos que terão dentro de cada coluna*/
         column-gap: 32px;
         padding: 16px 60px;
+        grid-column: 2;
+
+    }
+
+    .titulo-secao {
+        grid-column: span 4;
     }
 }
 
 .secao {
     display: grid;
     gap: 16px;
+}
+
+@media screen and (min-width: 1440px) {
+    .secao {
+        grid-template-columns: repeat(4, 1fr);
+    }
 }
 
 .cartao {
@@ -220,6 +245,10 @@ body {
     gap: 8px; /*coloca espaçamento entre os grid elements entre as linhas e colunas 
     para colocar espaçamento apenas entre linhas, usar o row-gap
     para colocar espaçamento apenas entre colunas, usar o column-gap*/
+}
+
+.cartao__imagem--desktop{
+    display: none;
 }
 
 .cartao--destaque {
@@ -293,10 +322,28 @@ body {
 
 
 @media screen and (min-width: 1440px) {
+    .cartao--destaque {
+        margin-bottom: 0px;
+    }
+
+    .cartao__imagem--mobile{
+        display: none;
+    } 
+
+    .cartao__imagem--desktop{
+        display: block;
+    }
+
+    .cartao__botao--destaque {
+        grid-column: auto;
+        padding: 16px 12px;
+    }
+
     .cartao--recentes {
         display: grid;
         grid-template-columns: auto auto;
         align-items: center;
+        align-self: flex-start;
         row-gap: 24px;
         width: 256px;
         padding: 16px;
@@ -344,8 +391,34 @@ body {
         font-size: 0.8rem;
         color: #95999C;
     }
+    
 
+    .destaque-video {
+        grid-area: destaque-video; /*grid-area define qual o valor de área do grid terá o elemento*/
+    }
+    
+    .videos-recentes {
+        grid-area: videos-recentes;
+    }
+    
+    .secao-videos{
+        grid-area:secao-videos;
+    }
+    
+    .destaque-produtos {
+        grid-area: destaque-produtos;
+    }
+    
+    .produtos-recentes {
+        grid-area: produtos-recentes;
+    }
+    
+    .secao-produtos {
+        grid-area: secao-produtos;
+    }
 }
+
+
     
 
 
